@@ -1,0 +1,822 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #000000;
+    color: white;
+    text-align: center;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #004ea1cc;
+    backdrop-filter: blur(10px); /* Blur effect */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.header nav ul li {
+    margin: 0 15px;
+}
+
+.header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.auth-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-login {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-register {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Banner */
+.banner {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.banner img {
+    max-width: 95%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Slot Section */
+.slot-section {
+    margin-top: 20px;
+}
+
+.slot-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+/* Box untuk RTP Slot */
+.slot-card {
+    background: linear-gradient(145deg, #001f3f, #004ea1);
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0px 0px 10px 3px rgba(0, 204, 255, 0.8);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border: 3px solid rgba(0, 204, 255, 0.5);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Animasi hover pada slot-card */
+.slot-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 15px 5px rgba(255, 217, 0, 0.9);
+}
+
+/* RESPONSIF */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .slot-container {
+        grid-template-columns: repeat(3, 1fr); /* 3 kolom di tablet */
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .slot-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 kolom di mobile */
+    }
+}
+
+/* HP Kecil */
+@media (max-width: 480px) {
+    .slot-container {
+        grid-template-columns: repeat(2, 1fr); /* Tetap 2 kolom di HP kecil */
+        gap: 5px;
+    }
+}
+
+/* Efek Blink Border */
+@keyframes blinkBorder {
+    0% { border-color: #00ccff; box-shadow: 0px 0px 15px rgba(0, 204, 255, 0.8); }
+    50% { border-color: #ffd700; box-shadow: 0px 0px 15px rgba(255, 217, 0, 0.8); }
+    100% { border-color: #00ccff; box-shadow: 0px 0px 15px rgba(0, 204, 255, 0.8); }
+}
+
+/* Tambahkan animasi border ke slot */
+.slot-card {
+    animation: blinkBorder 2s infinite alternate;
+}
+
+
+.slot-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Progress Bar */
+.percent-bar {
+    width: 100%;
+    height: 25px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Efek Glow pada Progress Bar */
+.percent-fill::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+    opacity: 0.6;
+    mix-blend-mode: overlay;
+}
+
+/* Efek Shimmer */
+.percent-fill::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -15%;
+    width: 20%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.562);
+    filter: blur(7px);
+    animation: shimmer 2.5s infinite linear;
+}
+
+
+@keyframes shimmer {
+    0% { left: -15%; }
+    100% { left: 100%; }
+}
+/* Efek Neon Glow pada Angka Persentase */
+@keyframes textGlow {
+    0% { text-shadow: 0px 0px 8px rgb(255, 255, 255); }
+    100% { text-shadow: 0px 0px 15px rgba(255, 255, 255, 1); }
+}
+
+/* Progress Fill */
+.percent-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #0077ff, #00ffea, #00ff73);
+    width: 0%;
+    transition: width 1.5s ease-in-out;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 12px;
+    box-shadow: 0px 0px 12px rgba(255, 0, 255, 0.8);
+}
+
+/* Angka Tetap di Tengah */
+.percent-text {
+    font-weight: bold;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    color: rgb(0, 0, 0);
+    position: absolute;
+    z-index: 2;
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8);
+}
+
+/* Styling untuk Informasi Situs */
+.table-container {
+    width: 95%;
+    max-width: 900px;
+    margin: 20px auto;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+    text-align: center;
+    border: 3px solid #005fb8;
+    animation: blinkBorder 1.5s infinite alternate;
+}
+
+/* Animasi Blink */
+@keyframes blinkBorder {
+    0% { border-color: #005fb8; box-shadow: 0px 0px 10px rgba(255, 204, 0, 0.8); }
+    100% { border-color: #ff6600; box-shadow: 0px 0px 15px rgba(255, 102, 0, 0.9); }
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+}
+
+.table th {
+    background: #000000;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    padding: 10px;
+}
+
+.table td {
+    padding: 10px;
+    border: 1px solid #ffffff;
+    text-align: left;
+}
+
+.table td:first-child {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .table-container {
+        width: 95%;
+        padding: 15px;
+    }
+}
+
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #000000;
+    color: white;
+    text-align: center;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #004ea1cc;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Tombol Login & Daftar */
+.auth-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap; /* Membuat tombol tetap rapi di layar kecil */
+}
+
+.auth-buttons a {
+    text-decoration: none;
+}
+
+.auth-buttons button {
+    padding: 14px 100px; /* Padding fleksibel */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4); /* Shadow awal */
+    width: 100%; /* Supaya tombol tetap responsif */
+    max-width: 550px; /* Ukuran maksimum agar tidak terlalu besar di desktop */
+    text-align: center;
+}
+
+/* Gradient Buttons dengan Shadow */
+.btn-login {
+    background: linear-gradient(45deg, #007bff, #00d4ff);
+    color: white;
+    box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.6); /* Shadow biru */
+}
+
+.btn-register {
+    background: linear-gradient(45deg, #28a745, #a6ff00);
+    color: white;
+    box-shadow: 0px 4px 10px rgba(40, 167, 69, 0.6); /* Shadow hijau */
+}
+
+/* Hover Effects */
+.btn-login:hover {
+    background: linear-gradient(45deg, #0056b3, #008cff);
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(0, 123, 255, 0.9); /* Shadow lebih besar saat hover */
+}
+
+.btn-register:hover {
+    background: linear-gradient(45deg, #1e7e34, #8cff00);
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(40, 167, 69, 0.9); /* Shadow lebih besar saat hover */
+}
+
+/* Active Click Effect */
+.btn-login:active, .btn-register:active {
+    transform: scale(0.95);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3); /* Shadow kecil saat ditekan */
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .auth-buttons {
+        flex-direction: column;
+        align-items: justify;
+        gap: 15px;
+    }
+
+    .auth-buttons button {
+        width: 95%; /* Supaya lebih pas di layar kecil */
+        max-width: 385px;
+    }
+}
+
+/* Footer */
+.footer {
+    background: #000000;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Logo Section */
+.footer-logo {
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+/* Footer Links */
+.footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-links a:hover {
+    color: #00d4ff;
+}
+
+/* Social Media Icons */
+.footer-social {
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social a img {
+    width: 30px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.footer-social a:hover img {
+    transform: scale(1.2);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    margin-top: 15px;
+    padding: 10px 0;
+    background: #111;
+    font-size: 14px;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+#filter-buttons {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.filter-btn {
+    background: linear-gradient(45deg, #03d3fc, #ffd500);
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.filter-btn:hover {
+    background: linear-gradient(45deg, #03d3fc, #ffd500);
+    transform: scale(1.05);
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .filter-btn {
+        width: 90%;
+        max-width: 300px;
+    }
+}
+
+/* Header Box (Seperti Tabel dengan Animasi Blink) */
+.header-box {
+    width: 70%;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.9); /* Transparan Elegan */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+    text-align: center;
+    border: 3px solid #03d3fc; /* Warna emas awal */
+    animation: blinkBorder 1.5s infinite alternate;
+}
+
+/* Animasi Blink pada Border */
+@keyframes blinkBorder {
+    0% {
+        border-color: #03d3fc; /* Emas */
+        box-shadow: 0px 0px 10px rgba(255, 204, 0, 0.8);
+    }
+    100% {
+        border-color: #ffd500; /* Oranye */
+        box-shadow: 0px 0px 15px rgba(0, 217, 255, 0.9);
+    }
+}
+
+/* Styling H1 di dalam Box */
+.header-box h1 {
+    font-size: 22px;
+    color: white;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Filter Button Container */
+#filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Tombol Filter */
+.filter-btn {
+    background: linear-gradient(45deg, #03d3fc, #ffd500);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid #03d3fc;
+    animation: blinkButton 1.5s infinite alternate;
+}
+
+/* Animasi Blink pada Tombol */
+@keyframes blinkButton {
+    0% {
+        border-color: #03d3fc; /* Emas */
+        box-shadow: 0px 0px 10px rgba(255, 204, 0, 0.8);
+    }
+    100% {
+        border-color: #ffd500; /* Oranye */
+        box-shadow: 0px 0px 15px rgba(0, 217, 255, 0.9);
+    }
+}
+
+/* Hover Effect */
+.filter-btn:hover {
+    background: linear-gradient(45deg, #03d3fc, #ffd500);
+    transform: scale(1.05);
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .header-box {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .filter-btn {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .header-box h1 {
+        font-size: 18px;
+    }
+}
+
+/* Announcement Bar */
+.announcement-bar {
+    background: linear-gradient(45deg, #00b7ff, #004ea1);
+    color: white;
+    padding: 10px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 999;
+}
+
+/* Button Speaker */
+#toggle-sound {
+    background: #00b7ff;
+    border: none;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#toggle-sound img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Header Auth Buttons */
+.header-auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.header-auth-buttons a {
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Login Button */
+.btn-login {
+    background: linear-gradient(45deg, #007bff, #00d4ff);
+    color: white;
+}
+
+.btn-login:hover {
+    background: linear-gradient(45deg, #0056b3, #008cff);
+    transform: scale(1.05);
+}
+
+/* Register Button */
+.btn-register {
+    background: linear-gradient(45deg, #28a745, #a6ff00);
+    color: white;
+}
+
+.btn-register:hover {
+    background: linear-gradient(45deg, #1e7e34, #8cff00);
+    transform: scale(1.05);
+}
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.search-bar input {
+    width: 250px;
+    padding: 10px;
+    border: 2px solid #00ccff;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    font-size: 16px;
+}
+
+.search-bar button {
+    padding: 10px 15px;
+    border: none;
+    background: linear-gradient(45deg, #00ccff, #00437a);
+    color: white;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-bar button:hover {
+    background: linear-gradient(45deg, #cc5500, #ff9900);
+    transform: scale(1.05);
+}
+
+.popular-games {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 910px;
+    padding: 15px;
+    border-radius: 15px;
+    background: linear-gradient(45deg, #000000, #000000); /* Gradient background */
+    box-shadow: 0px 0px 15px rgba(0, 217, 255, 0.8);
+    border: 3px solid #00ccff;
+    animation: blinkBorder 2s infinite alternate; /* Animasi blink */
+}
+
+/* Animasi Blink Border */
+@keyframes blinkBorder {
+    0% {
+        border-color: #00ccff;
+        box-shadow: 0px 0px 15px rgba(0, 217, 255, 0.8);
+    }
+    50% {
+        border-color: #ffd700;
+        box-shadow: 0px 0px 15px rgba(255, 217, 0, 0.8);
+    }
+    100% {
+        border-color: #00ccff;
+        box-shadow: 0px 0px 15px rgba(0, 217, 255, 0.8);
+    }
+}
+
+.popular-games h2 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8);
+}
+
+/* Container Slider */
+#popular-games-slider {
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Styling untuk gambar dalam slider */
+.splide__slide img {
+    width: 130px; /* Perbesar gambar */
+    height: 130px;
+    object-fit: contain;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #000000, #000000);
+    padding: 5px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Efek hover untuk gambar */
+.splide__slide img:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.9);
+}
+
+/* Tombol Navigasi */
+.splide__arrow {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+.splide__arrow svg {
+    fill: white;
+}
+
+/* RESPONSIF */
+
+/* Desktop (gap 2px) */
+@media (min-width: 1025px) {
+    .splide__track {
+        gap: 2px; /* Kurangi jarak antar gambar */
+    }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .popular-games {
+        max-width: 95%;
+        padding: 10px;
+    }
+
+    .splide__slide img {
+        width: 110px;
+        height: 110px;
+    }
+}
+
+/* HP */
+@media (max-width: 768px) {
+    .popular-games {
+        max-width: 95%;
+        padding: 10px;
+    }
+
+    .splide__slide img {
+        width: 90px;
+        height: 100px;
+    }
+
+    .splide__arrow {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+/* HP Kecil */
+@media (max-width: 480px) {
+    .popular-games {
+        max-width: 95%;
+        padding: 10px;
+    }
+
+    .splide__slide img {
+        width: 80px;
+        height: 90px;
+    }
+
+    .splide__arrow {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+
+
+
